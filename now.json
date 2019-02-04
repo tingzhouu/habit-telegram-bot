@@ -1,0 +1,16 @@
+{
+  "name": "janet-bot",
+  "alias": "janet-habit-bot",
+  "version": 2.0,
+  "builds": [{
+    "src": "index.js",
+    "use": "@now/node-server"
+  }],
+  "routes": [
+    { "src": "/.*", "dest": "index.js" }
+  ],
+  "env": {
+    "TELEGRAM_BOT_API": "@telegram-bot-api"
+  }
+
+}
