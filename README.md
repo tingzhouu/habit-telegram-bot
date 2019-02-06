@@ -1,5 +1,5 @@
 # Habit Telegram Bot
-This repository serves to document my learning of NodeJS.<br> This is a telegram bot that assists to enforce daily deliberate learning. The name of the bot is Good Janet.
+This repository serves to document my learning of Node.js.<br> This is a telegram bot that assists to enforce daily deliberate learning. <br>The name of the bot is [Good Janet](https://t.me/janet_habit_bot).
 
 ## What I Have Used
 
@@ -12,7 +12,7 @@ For hosting of web application.
 **[Telegram API](https://core.telegram.org/)**
 API for bot interaction.
 
-**[axios](https://www.npmjs.com/package/axios)**
+**[Axios](https://www.npmjs.com/package/axios)**
 Send requests to Telegram API.
 
 **[Body Parser](https://www.npmjs.com/package/body-parser)**
@@ -20,7 +20,7 @@ Node.js body parsing middleware.
 
 
 ## Getting Started
-Simply talk to the bot on telegram: Click here [link](https://t.me/janet_habit_bot)
+Simply talk to the bot on telegram: Click [here](https://t.me/janet_habit_bot)
 
 ## Authors
 
