@@ -1,7 +1,12 @@
 // For /checkOutNow command
+let date = require("date-and-time");
+
 function checkOutCommand(bot) {
-  bot.command("checkOutNow", (ctx) => {
-    ctx.reply(`Hello ${ctx.from.first_name}, you are now checked out!`);
+  let timeNow = new Date();
+  let timeNowString = date.format(timeNow, "ddd hh:mm A");
+
+  bot.command("check_out_now", (ctx) => {
+    ctx.reply(`Hello ${ctx.from.first_name}, you checked out at ${timeNowString}!`);
   });
 }
 
