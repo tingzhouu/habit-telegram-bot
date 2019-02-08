@@ -1,12 +1,13 @@
 // For /checkInNow command
-let date = require("date-and-time");
+const { getDateString } = require("./../components/date");
+const moment = require("moment");
 
 function checkInCommand(bot) {
   bot.command("check_in_now", (ctx) => {
-    let timeNow = new Date();
-    let timeNowString = date.format(timeNow, "ddd hh:mm A");
-
-    ctx.reply(`Hello ${ctx.from.first_name}, you checked in at ${timeNowString}!`);
+    const date = moment();
+    ctx.reply(
+      `Hello ${ctx.from.first_name}, your check-in timestamp is ${getDateString(date)}!`
+    );
   });
 }
 

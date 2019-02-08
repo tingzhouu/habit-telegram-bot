@@ -7,7 +7,9 @@
     { "src": "/.*", "dest": "index.js" }
   ],
   "env": {
-    "BOT_TOKEN": "@telegram-bot-api"
+    "BOT_TOKEN": "@telegram-bot-api",
+    "MONGO_USER": "@mongo-db-username",
+    "MONGO_PASSWORD": "@mongo-db-password"
   }
 
 }

@@ -1,11 +1,13 @@
-// For /helpcommand
+// For /help command
 function helpCommand(bot) {
   bot.command("help", (ctx) => {
     ctx.reply(
       `Below are the list of functions available:\n
-      /checkInNow - Check in with current timestamp
-      /checkOutNow - Check out with current timestamp
-      /cheatDay - Consume your cheat day for the month`
+/start - Let Janet introduce herself
+/help - List available commands
+/check_in_now - Check in with current timestamp
+/check_out_now - Check out with current timestamp
+/cheat_day - Consume your cheat day for the month`
     );
   });
 }

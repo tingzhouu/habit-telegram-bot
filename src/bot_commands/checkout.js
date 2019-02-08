@@ -1,12 +1,13 @@
 // For /checkOutNow command
-let date = require("date-and-time");
+const { getDateString } = require("./../components/date");
+const moment = require("moment");
 
 function checkOutCommand(bot) {
-  let timeNow = new Date();
-  let timeNowString = date.format(timeNow, "ddd hh:mm A");
-
   bot.command("check_out_now", (ctx) => {
-    ctx.reply(`Hello ${ctx.from.first_name}, you checked out at ${timeNowString}!`);
+    const date = moment();
+    ctx.reply(
+      `Hello ${ctx.from.first_name}, your check-out timestamp is ${getDateString(date)}!`
+    );
   });
 }
 
