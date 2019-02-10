@@ -12,6 +12,7 @@ expressApp.get("/", function(req, res) {
 
 connectToDB();
 
+/*
 expressApp.use(bot.webhookCallback("/"));
 
 bot.telegram
@@ -23,6 +24,9 @@ bot.telegram
     console.log("Telegram bot setWebhook failed!");
     console.log(error);
   });
+*/
+
+bot.launch()
 
 expressApp.listen(PORT, () => {
   console.log(`Telegram bot listening on port ${PORT}!`);;
