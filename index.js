@@ -28,6 +28,5 @@ bot.telegram
   });
 */
 expressApp.listen(PORT, () => {
-  console.log(`Telegram bot listening on port ${PORT}!`);
-  console.log(mongoose.connections.readyState);
+  console.log(`Telegram bot listening on port ${PORT}!`);;
 });
