@@ -1,10 +1,13 @@
 const mongoose = require("mongoose");
-const moment = require("moment");
-const { logCheckIn, checkCheckedInUser } = require("./current-check-in");
+require('dotenv').config();
 
-mongoose.connect(
-  "mongodb+srv://admin-tingzhou:nasitomato@cluster0-71gbh.mongodb.net/wikiDB?retryWrites=true",
-  { useNewUrlParser: true }
-);
+function connectToDB() {
+  mongoose.connect(
+    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0-71gbh.mongodb.net/wikiDB?retryWrites=true`,
+    { useNewUrlParser: true }
+  );
+}
 
-checkCheckedInUser({from: {id: 1234}});
+module.exports = {
+  connectToDB: connectToDB
+}

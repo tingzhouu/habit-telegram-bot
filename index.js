@@ -1,27 +1,18 @@
 const { bot } = require("./src/bot");
 const express = require("express");
 const expressApp = express();
-const mongoose = require("mongoose");
+const { connectToDB } = require("./src/components/database/database");
 
 expressApp.get("/", function(req, res) {
   res.send("hi");
 });
 
-// mongoose.connect(
-//   `mongodb+srv://${process.env.MONGO_USER}:${
-//     process.env.MONGO_PASSWORD
-//   }@cluster0-71gbh.mongodb.net/habitbotDB?retryWrites=true`,
-//   { useNewUrlParser: true },
-//   function(error) {
-//     console.log("failed to connect to DB");
-//     console.log(error);
-//   }
-// );
+connectToDB();
 
 expressApp.use(bot.webhookCallback("/"));
 
 bot.telegram
-  .setWebhook("https://janet-habit-bot.now.sh")
+  .setWebhook("https://janet-habit-bot.herokuapp.com/")
   .then(function() {
     console.log("Telegram bot setWebhook ok!");
   })
