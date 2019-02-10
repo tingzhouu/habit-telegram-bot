@@ -11,7 +11,7 @@ function checkInCommand(bot) {
       if (docs != null) { // If user is checked in.
         const previousCheckIn = getDateString(docs.checkInTimeStamp); // Formats check-in timestamp to a string.
         console.log(`User checked in previously at ${previousCheckIn}`);
-        return ctx.reply( // Sends message to user to ask if user wants to check-out instead.
+        ctx.reply( // Sends message to user to ask if user wants to check-out instead.
           `Your previous check-in timestamp is: ${ previousCheckIn }\nDo you want to /check_out_now instead?`
         );
       } else {
@@ -24,7 +24,7 @@ function checkInCommand(bot) {
         newRequestLog.save(function(err) { // Writes the document to MongoDB.
           if (!err) { // If writing to MongoDB is successful.
             console.log("successfully logged to DB");
-            return ctx.reply( // Sends message to user with check-in time stamp
+            ctx.reply( // Sends message to user with check-in time stamp
               `Your check-in timestamp is: ${getDateString(currentTimeStamp)}`
             );
           } else { // If writing to MongoDB is not successful.

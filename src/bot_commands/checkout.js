@@ -25,7 +25,7 @@ function checkOutCommand(bot) {
 
             currentCheckInLog.deleteMany( // Removes user from currentcheckinlogs. Uses deleteMany to capture corner case of duplicate entries.
               { telegramID: docs.telegramID },
-              function(err) {
+              function (err) {
                 if (!err) { // If deletion from MongoDB is successful.
                   console.log("Successfully removed from current check-in log");
                 } else {
@@ -34,7 +34,7 @@ function checkOutCommand(bot) {
               }
             );
 
-            return ctx.reply( // Sends message to user with check-out timestamp.
+            ctx.reply( // Sends message to user with check-out timestamp.
               `Your check-out timestamp is: ${getDateString(currentTimeStamp)}`
             );
           } else { // If writing to MongoDB is unsuccessful.
@@ -43,7 +43,7 @@ function checkOutCommand(bot) {
         });
       } else { // If user is not checked in.
         console.log("User has not checked in yet");
-        return ctx.reply( // Sends message to user to ask if user wants to check-in instead.
+        ctx.reply( // Sends message to user to ask if user wants to check-in instead.
           `You have not checked in.\nDo you want to /check_in_now instead?`
         );
         
