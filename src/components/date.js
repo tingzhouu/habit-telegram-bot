@@ -1,8 +1,9 @@
 // to get a date string
-const moment = require("moment");
+const moment = require("moment-timezone");
+
 
 function getDateString(date) {
-  return moment().format("ddd DD MMM, h:mma");
+  return moment(date).tz("Asia/Singapore").format("ddd DD MMM, h:mma");
 }
 
 module.exports = {
