@@ -2,7 +2,7 @@
 const moment = require("moment-timezone");
 
 function getDateString(date) {
-  return date.format("ddd DD MMM, h:mma");
+  return moment(date).format("ddd DD MMM, h:mma");
 }
 
 module.exports = {

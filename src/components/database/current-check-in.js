@@ -16,6 +16,7 @@ function logCheckIn(ctx) {
     if (docs != null) {
       console.log("i see you have checked in");
       ctx.reply(`Your previous check-in timestamp is: ${getDateString(docs.checkInTimeStamp)} \nDo you want to /check_out_now instead?`);
+
     } else {
       console.log("i see you have not checked in");
       const newRequestLog = new currentCheckInLog({
