@@ -11,7 +11,7 @@ const currentCheckInSchema = mongoose.Schema({
 const currentCheckInLog = mongoose.model("CheckInLog", currentCheckInSchema);
 
 function logCheckIn(ctx) {
-  const currentTimeStamp = moment().tz("Asia/Singapore");
+  const currentTimeStamp = moment();
   currentCheckInLog.findOne({ telegramID: ctx.from.id }, function(err, docs) {
     if (docs != null) {
       console.log("i see you have checked in");
