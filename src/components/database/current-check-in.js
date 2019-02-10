@@ -27,6 +27,7 @@ async function logCheckIn(ctx) {
     newRequestLog.save(function(err) {
       if (!err) {
         console.log("successfully logged to DB");
+        ctx.reply("You have checked in successfully");
       } else {
         console.log(err);
       }
