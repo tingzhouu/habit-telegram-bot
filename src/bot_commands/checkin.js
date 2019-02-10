@@ -24,10 +24,11 @@ function checkInCommand(bot) {
 
         newRequestLog.save(function(err) {
           if (!err) {
-            console.log("successfully logged to DB");
+            
             ctx.reply(
               `Your check-in timestamp is: ${getDateString(currentTimeStamp)}`
             );
+            console.log("successfully logged to DB");
           } else {
             console.log(err);
           }

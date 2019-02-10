@@ -36,7 +36,6 @@ function checkOutCommand(bot) {
               }
             );
 
-            ctx.reply("dummy message");
             ctx.reply(
               `Your check-out timestamp is: ${getDateString(currentTimeStamp)}`
             );
