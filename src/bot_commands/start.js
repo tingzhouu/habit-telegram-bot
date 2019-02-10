@@ -6,7 +6,6 @@ function startCommand(bot) {
     ctx.reply(
       `Hello! I am the habit tracker bot! To view the list of commands, please type /help`
     );
-    logCheckIn(ctx);
   });
 }
 

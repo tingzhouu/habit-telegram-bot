@@ -10,32 +10,8 @@ const currentCheckInSchema = mongoose.Schema({
 
 const currentCheckInLog = mongoose.model("CheckInLog", currentCheckInSchema);
 
-function logCheckIn(ctx) {
-  const currentTimeStamp = moment();
-  currentCheckInLog.findOne({ telegramID: ctx.from.id }, function(err, docs) {
-    if (docs != null) {
-      console.log("i see you have checked in");
-      ctx.reply(`Your previous check-in timestamp is: ${getDateString(docs.checkInTimeStamp)} \nDo you want to /check_out_now instead?`);
 
-    } else {
-      console.log("i see you have not checked in");
-      const newRequestLog = new currentCheckInLog({
-        telegramID: ctx.from.id,
-        checkInTimeStamp: currentTimeStamp
-      });
-
-      newRequestLog.save(function(err) {
-        if (!err) {
-          console.log("successfully logged to DB");
-          ctx.reply(`Your check-in timestamp is: ${getDateString(currentTimeStamp)}`);
-        } else {
-          console.log(err);
-        }
-      });
-    }
-  });
-}
 
 module.exports = {
-  logCheckIn: logCheckIn,
+  currentCheckInLog: currentCheckInLog,
 };

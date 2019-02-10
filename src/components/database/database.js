@@ -9,11 +9,10 @@ function connectToDB() {
       pass: process.env.DB_PASSWORD
     }
   ).then(function() {
-    console.log(`User is ${process.env.DB_USER}`)
-    console.log("Connected to DB");
+    console.log(`Connected to DB with user: ${process.env.DB_USER}`);
   })
   .catch(function(err) {
-    console.log(`Failed to connect to DB with user ${process.env.DB_USER}`);
+    console.log(`Failed to connect to DB with user: ${process.env.DB_USER}`);
     console.log(err);
   });
 }
