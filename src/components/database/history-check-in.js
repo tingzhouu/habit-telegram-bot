@@ -1,3 +1,4 @@
+//Creates mongoose model for history of all check-ins
 const mongoose = require("mongoose");
 
 const historyCheckInSchema = mongoose.Schema({

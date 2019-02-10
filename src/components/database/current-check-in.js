@@ -1,3 +1,4 @@
+//Creates mongoose model for history of users who are currently checked-in
 const mongoose = require("mongoose");
 
 const currentCheckInSchema = mongoose.Schema({

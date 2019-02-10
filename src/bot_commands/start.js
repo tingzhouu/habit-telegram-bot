@@ -1,10 +1,8 @@
 // For /start command
-const { logCheckIn } = require("../components/database/current-check-in");
-
 function startCommand(bot) {
   bot.start((ctx) => {
     ctx.reply(
-      `Hello! I am the habit tracker bot! To view the list of commands, please type /help`
+      `Hello! My name is Janet :) I am a habit tracker bot! To view the list of commands, please type /help`
     );
   });
 }
