@@ -3,8 +3,11 @@ require('dotenv').config();
 
 function connectToDB() {
   mongoose.connect(
-    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0-71gbh.mongodb.net/wikiDB?retryWrites=true`,
-    { useNewUrlParser: true }
+    `mongodb+srv://:@cluster0-71gbh.mongodb.net/wikiDB?retryWrites=true`,
+    { useNewUrlParser: true,
+      user: process.env.DB_USER,
+      pass: process.env.DB_PASSWORD
+    }
   ).then(function() {
     console.log(`User is ${process.env.DB_USER}`)
     console.log("Connected to DB");
