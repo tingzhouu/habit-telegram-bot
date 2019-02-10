@@ -10,9 +10,8 @@ function checkInCommand(bot) {
       if (docs != null) {
         const previousCheckIn = getDateString(docs.checkInTimeStamp);
         console.log(`i see you have checked in previously at ${previousCheckIn}`);
-        ctx.reply("hahah");
         ctx.reply(
-          `Your previous check-in timestamp is: ${ previousCheckIn }\n Do you want to /check_out_now instead?`
+          `Your previous check-in timestamp is: ${ previousCheckIn }\nDo you want to /check_out_now instead?`
         );
       } else {
         console.log("i see you have not checked in");
