@@ -8,9 +8,11 @@ function checkInCommand(bot) {
     const currentTimeStamp = moment();
     currentCheckInLog.findOne({ telegramID: ctx.from.id }, function(err, docs) {
       if (docs != null) {
-        console.log("i see you have checked in");
+        const previousCheckIn = getDateString(docs.checkInTimeStamp);
+        console.log(`i see you have checked in previously at ${previousCheckIn}`);
+        ctx.reply("hahah");
         ctx.reply(
-          `Your previous check-in timestamp is: ${ getDateString(docs.checkInTimeStamp) }\nDo you want to /check_out_now instead?`
+          `Your previous check-in timestamp is: ${ previousCheckIn }\n Do you want to /check_out_now instead?`
         );
       } else {
         console.log("i see you have not checked in");
