@@ -11,11 +11,11 @@ const currentCheckInSchema = mongoose.Schema({
 const currentCheckInLog = mongoose.model("CheckInLog", currentCheckInSchema);
 
 function logCheckIn(ctx) {
-  const currentTimeStamp = moment().tz("Asia/Taipei");
+  const currentTimeStamp = moment().tz("Asia/Singapore");
   currentCheckInLog.findOne({ telegramID: ctx.from.id }, function(err, docs) {
     if (docs != null) {
       console.log("i see you have checked in");
-      ctx.reply(`Your previous check-in timestamp is: ${getDateString(docs.checkInTimeStamp)} \n Do you want to check-out instead?`);
+      ctx.reply(`Your previous check-in timestamp is: ${getDateString(docs.checkInTimeStamp)} \nDo you want to /check_out_now instead?`);
     } else {
       console.log("i see you have not checked in");
       const newRequestLog = new currentCheckInLog({

@@ -2,7 +2,6 @@ const { bot } = require("./src/bot");
 const express = require("express");
 const expressApp = express();
 const { connectToDB } = require("./src/components/database/database");
-const moment = require("moment-timezone");
 
 const URL = process.env.URL || "https://janet-habit-bot.herokuapp.com/";
 const PORT = process.env.PORT || 3000;
