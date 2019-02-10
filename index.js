@@ -3,6 +3,10 @@ const express = require("express");
 const expressApp = express();
 const { connectToDB } = require("./src/components/database/database");
 
+const URL = process.env.URL || "https://quiet-mesa-47315.herokuapp.com/";
+const PORT = process.env.PORT || 3000;
+
+
 expressApp.get("/", function(req, res) {
   res.send("hi");
 });
@@ -12,7 +16,7 @@ connectToDB();
 expressApp.use(bot.webhookCallback("/"));
 
 bot.telegram
-  .setWebhook("https://janet-habit-bot.herokuapp.com/")
+  .setWebhook(URL)
   .then(function() {
     console.log("Telegram bot setWebhook ok!");
   })
@@ -21,6 +25,6 @@ bot.telegram
     console.log(error);
   });
 
-expressApp.listen(3000, () => {
+expressApp.listen(PORT, () => {
   console.log("Telegram bot listening on port 3000!");
 });
