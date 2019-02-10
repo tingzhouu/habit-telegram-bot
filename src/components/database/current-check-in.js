@@ -12,8 +12,11 @@ const currentCheckInLog = mongoose.model("CheckInLog", currentCheckInSchema);
 
 function logCheckIn(ctx) {
   const previousCheckInDetails = checkCheckedInUser(ctx);
+  console.log("start of previous check in details");
+  console.log(previousCheckInDetails);
+  console.log("end of previous check in details");
 
-  if (isCheckedIn) {
+  if (previousCheckInDetails) {
     ctx.reply(`Your previous check-in timestamp is ${getDateString(previousCheckInDetails.checkInTimeStamp)}`);
   } else {
     const newRequestLog = new currentCheckInLog({
