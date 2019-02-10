@@ -4,20 +4,22 @@ This repository serves to document my learning of Node.js.<br> This is a telegra
 ## What I Have Used
 
 **[ExpressJS](https://expressjs.com/)**
-For the web application server to send requests to Telegram API.
+For the web application.
 
-**[Zeit Now](https://zeit.co/now)**
+**[Heroku](https://heroku.com)**
 For hosting of web application.
 
-**[Telegram API](https://core.telegram.org/)**
-API for bot interaction.
+**[Telegraf](https://telegraf.js.org)**
+Telgram bot framework.
 
-**[Axios](https://www.npmjs.com/package/axios)**
-Send requests to Telegram API.
+**[Moment Timezone](https://momentjs.com/timezone)**
+To adjust for timezone differences and format date/time.
 
-**[Body Parser](https://www.npmjs.com/package/body-parser)**
-Node.js body parsing middleware.
+**[MongoDB](https://www.mongodb.com/)**
+Database to store check-in and check-out information.
 
+**[Mongoose JS](https://mongoosejs.com/)**
+MongoDB object modelling.
 
 ## Getting Started
 Simply talk to the bot on telegram: Click [here](https://t.me/janet_habit_bot)
