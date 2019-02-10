@@ -21,10 +21,11 @@ function checkInCommand(bot) {
           telegramID: ctx.from.id,
           checkInTimeStamp: currentTimeStamp
         });
-        ctx.reply("dummy");
+
         newRequestLog.save(function(err) { // Writes the document to MongoDB.
           if (!err) { // If writing to MongoDB is successful.
             console.log("successfully logged to DB");
+            ctx.reply("dummy");
             ctx.reply( // Sends message to user with check-in time stamp
               `Your check-in timestamp is: ${getDateString(currentTimeStamp)}`
             );
