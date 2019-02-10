@@ -12,6 +12,8 @@ expressApp.get("/", function(req, res) {
 });
 
 connectToDB();
+
+
 /*
 expressApp.use(bot.webhookCallback("/"));
 
@@ -27,4 +29,5 @@ bot.telegram
 */
 expressApp.listen(PORT, () => {
   console.log(`Telegram bot listening on port ${PORT}!`);
+  console.log(mongoose.connections.readyState);
 });
