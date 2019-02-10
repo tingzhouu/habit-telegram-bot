@@ -3,7 +3,7 @@ const express = require("express");
 const expressApp = express();
 const { connectToDB } = require("./src/components/database/database");
 
-const URL = process.env.URL || "https://quiet-mesa-47315.herokuapp.com/";
+const URL = process.env.URL || "https://fast-crag-19178.herokuapp.com/";
 const PORT = process.env.PORT || 3000;
 
 
@@ -26,5 +26,5 @@ bot.telegram
   });
 
 expressApp.listen(PORT, () => {
-  console.log("Telegram bot listening on port 3000!");
+  console.log(`Telegram bot listening on port ${PORT}!`);
 });
