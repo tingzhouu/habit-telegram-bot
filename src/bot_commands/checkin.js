@@ -24,7 +24,6 @@ function checkInCommand(bot) {
 
         newRequestLog.save(function(err) {
           if (!err) {
-            
             ctx.reply(
               `Your check-in timestamp is: ${getDateString(currentTimeStamp)}`
             );

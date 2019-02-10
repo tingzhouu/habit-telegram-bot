@@ -44,11 +44,10 @@ function checkOutCommand(bot) {
           }
         });
       } else {
-        console.log("i see you have not checked in");
-        ctx.reply("dummy message");
         ctx.reply(
           `You have not checked in.\nDo you want to /check_in_now instead?`
         );
+        console.log("i see you have not checked in");
       }
     });
   });
