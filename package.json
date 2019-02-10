@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node .",
+    "start": "node index.js",
     "deploy": "now rm -y janet-bot; now; now alias"
   },
   "author": "",
