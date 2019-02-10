@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const moment = require("moment");
+const { getDateString } = require("../date");
 
 const currentCheckInSchema = mongoose.Schema({
   telegramID: { type: String, required: true },
@@ -10,18 +11,24 @@ const currentCheckInSchema = mongoose.Schema({
 const currentCheckInLog = mongoose.model("CheckInLog", currentCheckInSchema);
 
 function logCheckIn(ctx) {
-  let newRequestLog = new currentCheckInLog({
-    telegramID: ctx.from.id,
-    checkInTimeStamp: moment()
-  });
+  const previousCheckInDetails = checkCheckedInUser(ctx);
 
-  newRequestLog.save(function(err) {
-    if (!err) {
-      console.log("successfully logged to DB");
-    } else {
-      console.log(err);
-    }
-  });
+  if (isCheckedIn) {
+    ctx.reply(`Your previous check-in timestamp is ${getDateString(previousCheckInDetails.checkInTimeStamp)}`);
+  } else {
+    const newRequestLog = new currentCheckInLog({
+      telegramID: ctx.from.id,
+      checkInTimeStamp: moment()
+    });
+  
+    newRequestLog.save(function(err) {
+      if (!err) {
+        console.log("successfully logged to DB");
+      } else {
+        console.log(err);
+      }
+    });
+  }
 }
 
 function checkCheckedInUser(ctx) {
@@ -33,6 +40,7 @@ function checkCheckedInUser(ctx) {
     } else {
       console.log("i see you have not checked in");
       console.log(err);
+      return null;
     }
   });
 }
@@ -40,4 +48,4 @@ function checkCheckedInUser(ctx) {
 module.exports = {
   logCheckIn: logCheckIn,
   checkCheckedInUser: checkCheckedInUser
-}
+};
