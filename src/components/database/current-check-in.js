@@ -15,7 +15,7 @@ function logCheckIn(ctx) {
   currentCheckInLog.findOne({ telegramID: ctx.from.id }, function(err, docs) {
     if (docs != null) {
       console.log("i see you have checked in");
-      ctx.reply(`Your previous check-in timestamp is ${getDateString(previousCheckInDetails.checkInTimeStamp)}`);
+      ctx.reply(`Your previous check-in timestamp is ${getDateString(docs.checkInTimeStamp)}`);
       console.log(docs);
     } else {
       console.log("i see you have not checked in");
