@@ -34,18 +34,18 @@ function checkOutCommand(bot) {
               }
             );
 
-            return Promise.all([ctx.reply( // Sends message to user with check-out timestamp.
+            ctx.reply( // Sends message to user with check-out timestamp.
               `Your check-out timestamp is: ${getDateString(currentTimeStamp)}`
-            )]);
+            );
           } else { // If writing to MongoDB is unsuccessful.
             console.log(err);
           }
         });
       } else { // If user is not checked in.
         console.log("User has not checked in yet");
-        return Promise.all([ctx.reply( // Sends message to user to ask if user wants to check-in instead.
+        ctx.reply( // Sends message to user to ask if user wants to check-in instead.
           `You have not checked in.\nDo you want to /check_in_now instead?`
-        )]);
+        );
         
       }
     });
