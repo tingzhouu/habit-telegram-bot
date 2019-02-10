@@ -10,7 +10,7 @@ function connectToDB() {
     console.log("Connected to DB");
   })
   .catch(function(err) {
-    console.log("Failed to connect to DB");
+    console.log(`Failed to connect to DB with user ${process.env.DB_USER}`);
     console.log(err);
   });
 }
