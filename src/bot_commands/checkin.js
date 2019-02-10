@@ -1,8 +1,7 @@
 // For /checkInNow command
 const moment = require("moment");
-const {
-  currentCheckInLog
-} = require("../components/database/current-check-in");
+const { currentCheckInLog } = require("../components/database/current-check-in");
+const { getDateString } = require("../components/date");
 
 function checkInCommand(bot) {
   bot.command("check_in_now", (ctx) => {
