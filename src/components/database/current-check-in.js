@@ -38,5 +38,4 @@ function logCheckIn(ctx) {
 
 module.exports = {
   logCheckIn: logCheckIn,
-  checkCheckedInUser: checkCheckedInUser
 };
