@@ -10,9 +10,9 @@ const PORT = process.env.PORT || 3000;
 expressApp.get("/", function(req, res) {
   res.send("hi");
 });
-/*
-connectToDB();
 
+connectToDB();
+/*
 expressApp.use(bot.webhookCallback("/"));
 
 bot.telegram
