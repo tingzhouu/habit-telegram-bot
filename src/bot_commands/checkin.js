@@ -7,10 +7,11 @@ function checkInCommand(bot) {
   bot.command("check_in_now", (ctx) => { // This function will run when command /check_in_now is sent to the bot.
     const currentTimeStamp = moment(); // Captures current time-stamp using Moment JS library.
     currentCheckInLog.findOne({ telegramID: ctx.from.id }, function(err, docs) { // Searches current check-ins to see if the user is already checked in.
+      
       if (docs != null) { // If user is checked in.
         const previousCheckIn = getDateString(docs.checkInTimeStamp); // Formats check-in timestamp to a string.
         console.log(`User checked in previously at ${previousCheckIn}`);
-        ctx.reply( // Sends message to user to ask if user wants to check-out instead.
+        return ctx.reply( // Sends message to user to ask if user wants to check-out instead.
           `Your previous check-in timestamp is: ${ previousCheckIn }\nDo you want to /check_out_now instead?`
         );
       } else {
@@ -22,10 +23,10 @@ function checkInCommand(bot) {
 
         newRequestLog.save(function(err) { // Writes the document to MongoDB.
           if (!err) { // If writing to MongoDB is successful.
-            ctx.reply( // Sends message to user with check-in time stamp
+            console.log("successfully logged to DB");
+            return ctx.reply( // Sends message to user with check-in time stamp
               `Your check-in timestamp is: ${getDateString(currentTimeStamp)}`
             );
-            console.log("successfully logged to DB");
           } else { // If writing to MongoDB is not successful.
             console.log(err);
           }
