@@ -3,7 +3,7 @@ const express = require("express");
 const expressApp = express();
 const { connectToDB } = require("./src/components/database/database");
 
-const URL = process.env.URL || "https://fast-crag-19178.herokuapp.com/";
+const URL = process.env.URL || "https://janet-habit-bot.herokuapp.com/";
 const PORT = process.env.PORT || 3000;
 
 
