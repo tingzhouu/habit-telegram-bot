@@ -15,7 +15,7 @@ const historyCheckInLog = mongoose.model(
 
 async function processCheckOut(telegramID, checkInTimeStamp, checkOutTimeStamp) {
   const historyRequestLog = new historyCheckInLog({
-    // Creates a new document to write to MongoDB that logs the user's telegram ID, check-in timestamp to checkinlogs.
+    // Creates a new document to write to MongoDB that logs the user's telegram ID, check-in timestamp to historycheckinlogs.
     telegramID: telegramID,
     checkInTimeStamp: checkInTimeStamp,
     checkOutTimeStamp: checkOutTimeStamp
