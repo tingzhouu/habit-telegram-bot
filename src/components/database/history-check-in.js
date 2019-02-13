@@ -8,8 +8,23 @@ const historyCheckInSchema = mongoose.Schema({
   activityCompleted: String
 });
 
-const historyCheckInLog = mongoose.model("CheckInHistoryLog", historyCheckInSchema);
+const historyCheckInLog = mongoose.model(
+  "CheckInHistoryLog",
+  historyCheckInSchema
+);
+
+async function processCheckOut(telegramID, checkInTimeStamp, checkOutTimeStamp) {
+  const historyRequestLog = new historyCheckInLog({
+    // Creates a new document to write to MongoDB that logs the user's telegram ID, check-in timestamp to historycheckinlogs.
+    telegramID: telegramID,
+    checkInTimeStamp: checkInTimeStamp,
+    checkOutTimeStamp: checkOutTimeStamp
+  });
+
+  return historyRequestLog.save();
+}
 
 module.exports = {
-  historyCheckInLog: historyCheckInLog
+  historyCheckInLog: historyCheckInLog,
+  processCheckOut: processCheckOut
 };

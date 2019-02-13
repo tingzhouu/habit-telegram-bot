@@ -9,6 +9,22 @@ const currentCheckInSchema = mongoose.Schema({
 
 const currentCheckInLog = mongoose.model("CheckInLog", currentCheckInSchema);
 
+async function processCheckIn(ctx, currentTimeStamp) {
+  const newRequestLog = new currentCheckInLog({
+    // Creates a new document to write to MongoDB that logs the user's telegram ID, check-in timestamp to checkinlogs.
+    telegramID: ctx.from.id,
+    checkInTimeStamp: currentTimeStamp
+  });
+
+  return newRequestLog.save();
+}
+
+async function deleteFromCurrentCheckInLog(telegramID) {
+  return currentCheckInLog.deleteMany({telegramID: telegramID});
+}
+
 module.exports = {
-  currentCheckInLog: currentCheckInLog
+  currentCheckInLog: currentCheckInLog,
+  processCheckIn: processCheckIn,
+  deleteFromCurrentCheckInLog: deleteFromCurrentCheckInLog
 };
