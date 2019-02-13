@@ -3,20 +3,16 @@ const { cheatDayLog, saveCheatDay } = require("./../components/database/cheat-da
 const moment = require("moment-timezone");
 const { getDateString, convertDateToSGT } = require("./../components/date");
 
-
 function cheatDayCommand(bot) {
   bot.command("cheat_day", (ctx) => {
     const currentTimeStamp = moment(); // logs the current time stamp
 
-    const newCheatDayLog = new cheatDayLog({
-      telegramID: ctx.from.id,
-      cheatDayTimeStamp: currentTimeStamp
-    });
-
     // searches for all cheat days used by user.
-    cheatDayLog.find({telegramID: ctx.from.id}, function(err, docs) {
-      if (docs == null) { //if there are no entries for the user.
+    cheatDayLog.find({ telegramID: ctx.from.id }, function(err, docs) {
+      console.log(docs);
+      if (docs == null || docs.length == 0) { //if there are no entries for the user.
         // save the cheat day in database.
+        console.log("hi");
         saveCheatDay(ctx.from.id, currentTimeStamp).then(function(successfulRequest) {
           if (successfulRequest) {
             console.log("successfully logged to DB");
@@ -37,15 +33,10 @@ function cheatDayCommand(bot) {
         if (cheatDayLogWithCurrentMonth.length !== 0) {
           const previousCheatDayTimeStamp = convertDateToSGT(cheatDayLogWithCurrentMonth[0].cheatDayTimeStamp);
           ctx.reply("dummy");
-          ctx.reply(`Your cheat day for the month was used on: ${getDateString(previousCheatDayTimeStamp)}`);
+          ctx.reply(`Your cheat day for the month was used on: ${ getDateString(previousCheatDayTimeStamp) }`);
         }
       }
     });
-
-
-    
-
-    
   });
 }
 
