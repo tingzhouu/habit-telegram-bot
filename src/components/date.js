@@ -6,6 +6,11 @@ function getDateString(date) {
   return moment(date).tz("Asia/Singapore").format("ddd DD MMM, h:mma");
 }
 
+function convertDateToSGT(date) {
+  return moment.tz(date, "Asia/Singapore")
+}
+
 module.exports = {
-  getDateString: getDateString
+  getDateString: getDateString,
+  convertDateToSGT: convertDateToSGT
 };

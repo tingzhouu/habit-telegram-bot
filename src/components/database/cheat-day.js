@@ -8,6 +8,16 @@ const cheatDaySchema = mongoose.Schema({
 
 const cheatDayLog = mongoose.model("CheatDayLog", cheatDaySchema);
 
+async function saveCheatDay(telegramID, cheatDayTimeStamp) {
+  const newCheatDayLog = new cheatDayLog({
+    telegramID: telegramID,
+    cheatDayTimeStamp: cheatDayTimeStamp
+  });
+
+  return newCheatDayLog.save();
+}
+
 module.exports = {
-  cheatDayLog: cheatDayLog
+  cheatDayLog: cheatDayLog,
+  saveCheatDay: saveCheatDay
 };
