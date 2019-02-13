@@ -4,7 +4,8 @@ const { currentCheckInLog } = require("../components/database/current-check-in")
 const { getDateString } = require("../components/date");
 
 function checkInCommand(bot) {
-  bot.command("check_in_now", (ctx) => { // This function will run when command /check_in_now is sent to the bot.
+  // This function will run when command /check_in_now is sent to the bot.
+  bot.command("check_in_now", (ctx) => { 
     const currentTimeStamp = moment(); // Captures current time-stamp using Moment JS library.
     currentCheckInLog.findOne({ telegramID: ctx.from.id }, function(err, docs) { // Searches current check-ins to see if the user is already checked in.
       
