@@ -17,7 +17,7 @@ function cheatDayCommand(bot) {
           if (successfulRequest) {
             console.log("successfully logged to DB");
             ctx.reply("dummy");
-            ctx.reply("You have used your cheat day for the month!");
+            ctx.reply("You have consumed your cheat day for the month!");
           } else {
             console.log("failed to log to db");
           }
@@ -33,7 +33,7 @@ function cheatDayCommand(bot) {
         if (cheatDayLogWithCurrentMonth.length !== 0) {
           const previousCheatDayTimeStamp = convertDateToSGT(cheatDayLogWithCurrentMonth[0].cheatDayTimeStamp);
           ctx.reply("dummy");
-          ctx.reply(`Your cheat day for the month was used on: ${ getDateString(previousCheatDayTimeStamp) }`);
+          ctx.reply(`Your cheat day for the month was used on: ${ getDateString(previousCheatDayTimeStamp) }\n\nWait till next month!`);
         }
       }
     });
