@@ -1,6 +1,6 @@
 // For /help command
 function helpCommand(bot) {
-  bot.command("help", (ctx) => {
+  bot.command(["help", "help@janet_habit_bot"], (ctx) => {
     ctx.reply(
       `Below are the list of functions available:\n
 /start - Let Janet introduce herself

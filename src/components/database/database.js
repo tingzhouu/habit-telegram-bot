@@ -3,7 +3,7 @@ require('dotenv').config();
 
 function connectToDB() {
   mongoose.connect(
-    `mongodb+srv://:@cluster0-71gbh.mongodb.net/wikiDB?retryWrites=true`,
+    `mongodb+srv://:@cluster0-71gbh.mongodb.net/habitbotDB?retryWrites=true`,
     { useNewUrlParser: true,
       user: process.env.DB_USER,
       pass: process.env.DB_PASSWORD

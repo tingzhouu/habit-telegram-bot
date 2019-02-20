@@ -5,7 +5,7 @@ const { getDateString } = require("../components/date");
 
 function checkInCommand(bot) {
   // This function will run when command /check_in_now is sent to the bot.
-  bot.command("check_in_now", (ctx) => { 
+  bot.command(["check_in_now", "check_in_now@janet_habit_bot"], (ctx) => { 
     const currentTimeStamp = moment(); // Captures current time-stamp using Moment JS library.
     
     // Searches current check-ins to see if the user is already checked in.
