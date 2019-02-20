@@ -7,6 +7,8 @@ function helpCommand(bot) {
 /help - List available commands
 /check_in_now - Check in with current timestamp
 /check_out_now - Check out with current timestamp
+/check_in_manual - Check in at a certain time (DD/MM/YY HH:mm). eg /check_in_manual 28/11/19 16:48
+/check_out_manual - Check out at a certain time (DD/MM/YY HH:mm). eg /check_out_manual 28/11/19 16:48
 /cheat_day - Consume your cheat day for the month`
     );
   });

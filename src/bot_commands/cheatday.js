@@ -4,7 +4,7 @@ const moment = require("moment-timezone");
 const { getDateString, convertDateToSGT } = require("./../components/date");
 
 function cheatDayCommand(bot) {
-  bot.command("cheat_day", (ctx) => {
+  bot.command(["]cheat_day", "cheat_day@janet_habit_bot"], (ctx) => {
     const currentTimeStamp = moment(); // logs the current time stamp
 
     // searches for all cheat days used by user.
