@@ -12,7 +12,7 @@ expressApp.get("/", function(req, res) {
 });
 
 connectToDB(); // Connect to MongoDB database
-/*
+
 expressApp.use(bot.webhookCallback("/"));
 
 bot.telegram // Set webhook for telegram bot to herokuapp url
@@ -24,7 +24,7 @@ bot.telegram // Set webhook for telegram bot to herokuapp url
     console.log("Telegram bot setWebhook failed!");
     console.log(error);
   });
-*/ bot.launch();
+
 expressApp.listen(PORT, () => {
   console.log(`Telegram bot listening on port ${PORT}!`);
 });
