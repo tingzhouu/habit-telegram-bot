@@ -44,7 +44,7 @@ function checkInManualCommand(bot) {
 
 function errorMessage(ctx) {
   ctx.reply(
-    'For manual check-in, please use the following format with 24HR time: /check_in_manual DD/MM/YY HH:MM.\n\nExample: "/check_in_manual 28/11/19 16:48" will create a timestamp for 28 November 2019, 1648hrs'
+    "For manual check-in, please use the following format with 24HR time: /check_in_manual DD/MM/YY HH:MM.\n\nExample: /check_in_manual 22/04/19 16:48 will create a timestamp for 22 April 2019, 1648hrs"
   );
 }
 
