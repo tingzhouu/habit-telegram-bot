@@ -1,6 +1,7 @@
 const { getDateString } = require("../components/date");
 const moment = require("moment");
-const { currentCheckInLog, deleteFromCurrentCheckInLog } = require("../components/database/current-check-in");const { historyCheckInLog, processCheckOut } = require("../components/database/history-check-in");
+const { currentCheckInLog, deleteFromCurrentCheckInLog } = require("../components/database/current-check-in");
+const { historyCheckInLog, processCheckOut } = require("../components/database/history-check-in");
 
 function checkOutManualCommand(bot) {
   bot.command(["check_out_manual", "check_out_manual@janet_habit_bot"], (ctx) => {
@@ -10,19 +11,18 @@ function checkOutManualCommand(bot) {
       return;
     }
 
-    const manualTimeStamp = getManualTimeStamp(ctx)
-    
+    const manualTimeStamp = getManualTimeStamp(ctx);
+
     // Searches current check-ins to see if the user is already checked in.
     currentCheckInLog.findOne({ telegramID: ctx.from.id }, function(err, docs) {
-      if (docs != null) { // If user is checked in already.
-        console.log(
-          `User has checked in previously at ${getDateString(docs.checkInTimeStamp)}` 
-        );
+      if (docs != null) {
+        // If user is checked in already.
+        console.log(`User has checked in previously at ${getDateString(docs.checkInTimeStamp)}`);
 
-        processCheckOut(docs.telegramID, docs.checkInTimeStamp, manualTimeStamp).then(successfulRequest => {
+        processCheckOut(docs.telegramID, docs.checkInTimeStamp, manualTimeStamp).then((successfulRequest) => {
           if (successfulRequest) {
             console.log("successfully logged to DB");
-            deleteFromCurrentCheckInLog(docs.telegramID).then(successfulDeletion => {
+            deleteFromCurrentCheckInLog(docs.telegramID).then((successfulDeletion) => {
               if (successfulDeletion) {
                 console.log("Successfully removed from current check-in log");
                 ctx.reply("dummy");
@@ -35,16 +35,16 @@ function checkOutManualCommand(bot) {
             console.log("failed to log to DB");
           }
         });
-
-      } else { // If user is not checked in.
+      } else {
+        // If user is not checked in.
         console.log("User has not checked in yet");
         ctx.reply("dummy");
-        ctx.reply( // Sends message to user to ask if user wants to check-in instead.
+        ctx.reply(
+          // Sends message to user to ask if user wants to check-in instead.
           `You have not checked in.\nDo you want to /check_in_now instead?`
-        ); 
+        );
       }
     });
-
   });
 }
 
@@ -71,12 +71,14 @@ function checkValidMessage(ctx) {
 
 function getManualTimeStamp(ctx) {
   const message = ctx.update.message.text.split(" ");
-  return moment(`${message[1]} ${message[2]}`, "DD/MM/YY HH:mm");
+  return moment.tz(`${message[1]} ${message[2]}`, "DD/MM/YY HH:mm", "Asia/Singapore");
 }
 
 function errorMessage(ctx) {
   ctx.reply("dummy");
-  ctx.reply("For manual check-out, please use the following format with 24HR time: /check_out_manual DD/MM/YY HH:MM.\n\nExample: \"/check_out_manual 28/11/19 16:48\" will create a timestamp for 28 November 2019, 1648hrs");
+  ctx.reply(
+    'For manual check-out, please use the following format with 24HR time: /check_out_manual DD/MM/YY HH:MM.\n\nExample: "/check_out_manual 28/11/19 16:48" will create a timestamp for 28 November 2019, 1648hrs'
+  );
 }
 module.exports = {
   checkOutManualCommand: checkOutManualCommand
