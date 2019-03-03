@@ -76,7 +76,7 @@ function getManualTimeStamp(ctx) {
 
 function errorMessage(ctx) {
   ctx.reply(
-    'For manual check-out, please use the following format with 24HR time: /check_out_manual DD/MM/YY HH:MM.\n\nExample: "/check_out_manual 22/04/19 18:23" will create a timestamp for 22 April 2019, 1823hrs'
+    "For manual check-out, please use the following format with 24HR time: /check_out_manual DD/MM/YY HH:MM.\n\nExample: /check_out_manual 22/04/19 18:23 will create a timestamp for 22 April 2019, 1823hrs"
   );
 }
 module.exports = {
