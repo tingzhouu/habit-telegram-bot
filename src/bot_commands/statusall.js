@@ -6,7 +6,6 @@ const moment = require("moment");
 
 async function statusAllCommand(bot) {
   bot.command(["status_all", "status_all@janet_habit_bot"], (ctx) => {
-    ctx.reply("dummy");
     userLog.find(function(err, docs) {
       docs.forEach(async function(user) {
         const statusString = await checkInStatus(user.telegramID);
