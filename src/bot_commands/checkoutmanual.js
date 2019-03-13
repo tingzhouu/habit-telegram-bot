@@ -1,4 +1,4 @@
-const { getDateString } = require("../components/date");
+const { getDateString, getCheckInDuration } = require("../components/date");
 const moment = require("moment");
 const { currentCheckInLog, deleteFromCurrentCheckInLog } = require("../components/database/current-check-in");
 const { historyCheckInLog, processCheckOut } = require("../components/database/history-check-in");
@@ -26,7 +26,11 @@ function checkOutManualCommand(bot) {
               if (successfulDeletion) {
                 console.log("Successfully removed from current check-in log");
                 ctx.reply("dummy");
-                ctx.reply(`Your check-out timestamp is: ${getDateString(manualTimeStamp)}`);
+                ctx.reply(
+                  `Your check-out timestamp is: ${getDateString(
+                    manualTimeStamp
+                  )}\nYou have checked in for ${getCheckInDuration(docs.checkInTimeStamp, manualTimeStamp)}`
+                );
               } else {
                 console.log("Unsuccessful deletion");
               }

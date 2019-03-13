@@ -13,7 +13,6 @@ function statusCommand(bot) {
         ctx.reply(`Hey ${ctx.from.first_name}, you are currently checked in with the timestamp: ${previousCheckIn}`);
       } else {
         historyCheckInLog.find({ telegramID: ctx.from.id }, function(err, docs) {
-          let hasCheckedInToday = false;
           let day = moment.tz("Asia/Singapore").date();
           let month = moment.tz("Asia/Singapore").month();
           let year = moment.tz("Asia/Singapore").year();
@@ -32,7 +31,7 @@ function statusCommand(bot) {
             ctx.reply(
               `Hey ${ctx.from.first_name}, you have already checked in today with the timestamp: ${getDateString(
                 todayCheckInEntry.checkInTimeStamp
-              )}`
+              )}\nGreat job!`
             );
           } else {
             ctx.reply("dummy");

@@ -10,7 +10,8 @@ function helpCommand(bot) {
 /check_in_manual - Check in at a certain time (DD/MM/YY HH:mm). eg /check_in_manual 22/04/19 16:48
 /check_out_manual - Check out at a certain time (DD/MM/YY HH:mm). eg /check_out_manual 22/04/19 18:23
 /cheat_day - Consume your cheat day for the month
-/status - Check if you have checked in for today`
+/status - Check if you have checked in for today
+/status_all - Check everyone's status!`
     );
   });
 }
